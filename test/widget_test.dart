@@ -32,7 +32,6 @@ void main() {
     await tester.tap(find.byIcon(Icons.add));
     await tester.pump();
 
-    // This won't find 1 since the onPressed does nothing, but the widget builds.
     expect(find.text('0'), findsOneWidget);
   });
 }

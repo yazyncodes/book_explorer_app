@@ -21,7 +21,7 @@ void main() async {
       providers: [
         BlocProvider<AuthCubit>.value(value: authCubit),
       ],
-      child: const BookExplorerApp(), // ✅ simplified
+      child: const BookExplorerApp(), 
     ),
   );
 }

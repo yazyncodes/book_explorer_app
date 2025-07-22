@@ -1,4 +1,3 @@
-// lib/ui/components/app_app_bar.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '/logic/cubits/theme_cubit.dart';
@@ -48,7 +47,7 @@ class AppAppBar extends StatelessWidget implements PreferredSizeWidget {
           IconButton(
             icon: Icon(Icons.search, color: theme.iconTheme.color),
             onPressed: () {
-              // Add search action if needed
+              
             },
           ),
         if (showProfile)

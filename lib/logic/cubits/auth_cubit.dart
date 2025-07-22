@@ -53,7 +53,7 @@ class AuthCubit extends Cubit<AuthState> {
 
   Future<void> signOut() async {
   await _firebaseAuth.signOut();
-  _authStateChanged(null); // 🔥 Force emit Unauthenticated state
+  _authStateChanged(null); 
 }
 
 }
