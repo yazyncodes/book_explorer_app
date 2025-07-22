@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "193356070240",
+    "project_id": "book-explorer-49400",
+    "storage_bucket": "book-explorer-49400.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:193356070240:android:9d47956c5913dac7433205",
+        "android_client_info": {
+          "package_name": "com.example.book_explorer_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdS7bHlaPr8mN04Z-dAhJrVhzbbd5-YvM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

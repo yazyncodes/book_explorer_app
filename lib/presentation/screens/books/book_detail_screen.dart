@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '/data/models/book.dart';
 import '/logic/cubits/book_cubit.dart';
+import '/ui/components/app_app_bar.dart';
+import '/ui/components/app_button.dart';
 
 class BookDetailScreen extends StatelessWidget {
   final Book book;
@@ -9,21 +11,23 @@ class BookDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+    final textTheme = theme.textTheme;
+
     final isSaved = context.select<BookCubit, bool>(
       (cubit) => cubit.state.firstWhere((b) => b.id == book.id).isBookmarked,
     );
 
     return Scaffold(
-      backgroundColor: const Color(0xFFF7F9FC),
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: const Text('Book Details'),
-        centerTitle: true,
-        leading: const BackButton(),
-        actions: const [
-          Icon(Icons.share, color: Colors.black87),
+      backgroundColor: theme.scaffoldBackgroundColor,
+      appBar: const AppAppBar(
+        title: 'Book Details',
+        showBack: true,
+        actions: [
+          Icon(Icons.share),
           SizedBox(width: 12),
-          Icon(Icons.more_vert, color: Colors.black87),
+          Icon(Icons.more_vert),
           SizedBox(width: 8),
         ],
       ),
@@ -32,17 +36,19 @@ class BookDetailScreen extends StatelessWidget {
         child: ListView(
           children: [
             const SizedBox(height: 24),
-            
+
             // Book Cover
             Center(
               child: Container(
                 width: 160,
                 height: 220,
                 decoration: BoxDecoration(
-                  color: Colors.grey.shade300,
+                  color: theme.cardColor,
                   borderRadius: BorderRadius.circular(12),
                 ),
-                child: const Center(child: Text("Book Cover")),
+                child: Center(
+                  child: Text("Book Cover", style: textTheme.bodyMedium),
+                ),
               ),
             ),
             const SizedBox(height: 24),
@@ -52,29 +58,34 @@ class BookDetailScreen extends StatelessWidget {
               child: Column(
                 children: [
                   Text(book.title,
-                      style: const TextStyle(
-                          fontSize: 20, fontWeight: FontWeight.bold)),
+                      style: textTheme.titleLarge?.copyWith(
+                        fontWeight: FontWeight.bold,
+                      )),
                   const SizedBox(height: 4),
                   Text("by ${book.author}",
-                      style: const TextStyle(color: Colors.black54)),
+                      style: textTheme.bodyMedium?.copyWith(
+                        color: colorScheme.onBackground.withOpacity(0.6),
+                      )),
                 ],
               ),
             ),
             const SizedBox(height: 12),
 
-            // Rating (Static Example)
+            // Static Rating
             Center(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Icon(Icons.star, color: Colors.amber, size: 20),
-                  Icon(Icons.star, color: Colors.amber, size: 20),
-                  Icon(Icons.star, color: Colors.amber, size: 20),
-                  Icon(Icons.star_half, color: Colors.amber, size: 20),
-                  Icon(Icons.star_border, color: Colors.amber, size: 20),
-                  SizedBox(width: 8),
+                children: [
+                  const Icon(Icons.star, color: Colors.amber, size: 20),
+                  const Icon(Icons.star, color: Colors.amber, size: 20),
+                  const Icon(Icons.star, color: Colors.amber, size: 20),
+                  const Icon(Icons.star_half, color: Colors.amber, size: 20),
+                  const Icon(Icons.star_border, color: Colors.amber, size: 20),
+                  const SizedBox(width: 8),
                   Text('4.2 (1,288 ratings)',
-                      style: TextStyle(color: Colors.black54)),
+                      style: textTheme.bodySmall?.copyWith(
+                        color: colorScheme.onBackground.withOpacity(0.6),
+                      )),
                 ],
               ),
             ),
@@ -84,41 +95,38 @@ class BookDetailScreen extends StatelessWidget {
             Row(
               children: [
                 Expanded(
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.black87,
-                      padding: const EdgeInsets.symmetric(vertical: 14),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                    ),
+                  child: AppButton(
+                    label: 'Start Reading',
                     onPressed: () {
-                      // Dummy action
+                      // reading logic (later)
                     },
-                    child: const Text("Start Reading"),
                   ),
                 ),
                 const SizedBox(width: 12),
                 IconButton(
                   icon: Icon(
                     isSaved ? Icons.bookmark : Icons.bookmark_border,
-                    color: isSaved ? Colors.blue : Colors.grey,
+                    color: isSaved
+                        ? colorScheme.primary
+                        : theme.iconTheme.color?.withOpacity(0.5),
                   ),
                   onPressed: () {
                     context.read<BookCubit>().toggleBookmark(book);
                   },
-                )
+                ),
               ],
             ),
             const SizedBox(height: 24),
 
             // Summary
-            const Text('Summary',
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+            Text('Summary',
+                style: textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.bold,
+                )),
             const SizedBox(height: 8),
             Text(
               book.summary,
-              style: const TextStyle(color: Colors.black87, height: 1.5),
+              style: textTheme.bodyLarge?.copyWith(height: 1.5),
             ),
             const SizedBox(height: 32),
           ],

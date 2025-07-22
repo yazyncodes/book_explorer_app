@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyDDtsiCKqDOJ6SJXA_r02-NQDI65o6xNyA</string>
+	<key>GCM_SENDER_ID</key>
+	<string>193356070240</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.bookExplorerApp</string>
+	<key>PROJECT_ID</key>
+	<string>book-explorer-49400</string>
+	<key>STORAGE_BUCKET</key>
+	<string>book-explorer-49400.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:193356070240:ios:03a38ce784a7fd26433205</string>
+</dict>
+</plist>
